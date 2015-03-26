@@ -1,4 +1,6 @@
 machine:
+  java:
+    version: oraclejdk8
   environment:
     # Disable gradle fancy single line output
     TERM: dumb
@@ -10,10 +12,10 @@ dependencies:
   override:
     # compileTestJava to ensure that we are downloading
     # and caching as many dependencies as possible
-    - ./gradlew dependencies compileTestJava
+    - ./gradlew --daemon --parallel dependencies compileTestJava
 test:
   override:
-    - ./gradlew all
+    - ./gradlew --daemon --parallel all
   post:
     # Copy the test metadata to the reports folder
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
