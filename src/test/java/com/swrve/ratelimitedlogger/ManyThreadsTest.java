@@ -59,7 +59,7 @@ public class ManyThreadsTest {
 
         // ensure that "similar messages suppressed" took place
         assertThat(logger.infoMessageCount, not(equalTo(c + 10)));
-        assertThat(logger.infoLastMessage.get(), startsWith("(suppressedFAIL "));
+        assertThat(logger.infoLastMessage.get(), startsWith("(suppressed "));
 
     }
 }
